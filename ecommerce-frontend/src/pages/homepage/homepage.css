@@ -1,0 +1,32 @@
+.card-game {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+  height: fit-content;
+  width: fit-content;
+  margin: 10px;
+}
+
+.card-game .title {
+  height: 40px;
+  width: 400px;
+  background: linear-gradient(to right, #1d7ce9, #3f7cd6);
+  display: flex;
+  align-items: center;
+}
+
+.card-game .box-price {
+  background-color: rgb(16, 30, 61);
+  color: rgb(21, 146, 21);
+  padding: 5px;
+  height: fit-content;
+  width: fit-content;
+  font-weight: bolder;
+  margin-left: auto;
+  margin-right: 5px;
+}
+
+.card-game .image {
+  height: 200px;
+  width: 400px;
+}

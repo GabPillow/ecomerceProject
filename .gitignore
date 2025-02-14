@@ -1,7 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-ecommerce-frontend/node_modules
+ecommerce-frontend/node_modules/
 ecommerce-frontend/.pnp
 .ecommerce-frontend/pnp.js
 
@@ -30,6 +30,7 @@ ecommerce-backend/tmp/cache/bootsnap/*
 ecommerce-backend/tmp/cache/bootsnap/compile-cache-iseq/*
 ecommerce-backend/tmp/cache/bootsnap/compile-cache-yaml/*
 ecommerce-backend/log/development.log
+ecommerce-backend/tmp/pids/
 
 # Ignorer tous les fichiers dans tmp/cache/
 ecommerce-backend/tmp/cache/*
