@@ -1,0 +1,115 @@
+.game-show {
+  padding-left: 20%;
+  padding-right: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 20px;
+  width: fit-content;
+}
+
+.game-show > .title {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.game-presentation {
+  display: flex;
+  background: linear-gradient(to bottom right, transparent, rgba(0, 0, 0, 0.301));
+  height: fit-content;
+  width: fit-content;
+  padding-right: 5px;
+  padding-top: 5px;
+}
+
+.game-presentation .image {
+  height: 337px;
+  width: 600px;
+  margin-right: 10px;
+}
+
+.game-presentation .description {
+  height: 330px;
+  width: 300px;
+}
+
+.game-presentation .description .text {
+  font-size: 13px;
+}
+
+.game-info {
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+}
+
+.info-left .info-box {
+  border-radius: 5px;
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.226), rgba(255, 255, 255, 0.459));
+  padding: 16px;
+  padding-bottom: 26px;
+  width: 500px;
+  height: fit-content;
+  position: relative;
+}
+
+.info-left .info-box > .title {
+  font-size: 21px;
+}
+
+.info-left .info-box .buy-box {
+  position: absolute;
+  bottom: -20px;
+  right: 20px;
+  display: flex;
+  background-color: black;
+  padding: 2px;
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+}
+
+.buy-box .price {
+  padding-top: 5px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.buy-box .buy-button {
+  background-color: rgb(21, 146, 21);
+  margin-left: 5px;
+  height: 30px;
+  width: fit-content;
+  padding-right: 16px;
+  padding-left: 16px;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.info-right .info-box {
+  width: 300px;
+  height: fit-content;
+  padding: 5px;
+  background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.233), rgba(0, 0, 0, 0.301));
+}
+
+.text-box {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+
+.text-box .title {
+  color: #556772;
+  margin-right: 5px;
+}
+
+.text-box .text {
+  color: #66C0F4;
+}
