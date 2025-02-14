@@ -26,3 +26,32 @@ a {
   color: inherit;
   outline: none;
 }
+
+input {
+  outline: none; /* Retirer l'outline qui apparaît quand l'input est sélectionné */
+  box-shadow: none; /* Retirer l'ombre (effet de profondeur) quand l'input est sélectionné */
+  border: none;
+}
+
+input:focus {
+  outline: none; /* Retirer l'outline */
+  box-shadow: none; /* Retirer l'ombre quand l'input est focus */
+  border: none; /* Retirer la bordure lorsqu'il est focus */
+}
+
+button {
+  background: none; /* Enlève l'arrière-plan */
+  border: none; /* Enlève la bordure */
+  padding: 0; /* Enlève les espacements par défaut */
+  font: inherit; /* Hérite de la police du parent */
+  color: inherit; /* Hérite de la couleur du parent */
+  cursor: pointer; /* Garde le curseur en forme de main */
+}
+
+button:focus {
+  outline: none; /* Enlève l'outline au focus */
+}
+
+button:hover {
+  filter: brightness(1.2);
+}
