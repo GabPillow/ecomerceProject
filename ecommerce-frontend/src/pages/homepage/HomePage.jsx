@@ -17,15 +17,17 @@ function HomePage() {
   }, []);
 
   return (
-    <div>
-    {games.length > 0 ? (
-      games.map((game) => (
-        <GameCard game={game} />
-      ))
-    ) : (
-      <p>Chargement des jeux...</p>
-    )}
-  </div>
+    <div className='homepage'>
+      <div className='game-list'>
+        {games.length > 0 ? (
+          games.map((game) => (
+            <GameCard game={game} />
+          ))
+        ) : (
+          <p>Chargement des jeux...</p>
+        )}
+      </div>
+    </div>
   );
 }
 
