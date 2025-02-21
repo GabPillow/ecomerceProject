@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :games, only: [:index, :show]
-      resources :orders, only: [:index, :show, :create, :update]
+      resources :orders, only: [:index, :show, :create, :update] do
+        get 'cart', on: :collection
+      end
     end
   end
 end
