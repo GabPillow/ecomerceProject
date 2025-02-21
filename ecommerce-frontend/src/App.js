@@ -5,6 +5,7 @@ import Header from './Header'
 import GameShow from './pages/GameShow/GameShow';
 import LoginPage from './pages/LoginPage/LoginPage';
 import CartPage from './pages/CartPage/CartPage';
+import OrdersPage from './pages/OrdersPage/OrdersPage';
 import NavBar from './components/NavBar';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/game/:id" element={<GameShow />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/orders" element={<OrdersPage />} />
         </Routes>
       </Router>
     </div>

@@ -20,7 +20,7 @@ function NavBar() {
       </div>
       <div className='navbar'>
         <NavLink name={"Magasin"} path={"/"} />
-        <NavLink name={"Commandes"} path={"/"}  />
+        <NavLink name={"Commandes"} path={"/orders"}  />
         <NavLink name={"Wishlist"} path={"/"}  />
       </div>
     </div>
