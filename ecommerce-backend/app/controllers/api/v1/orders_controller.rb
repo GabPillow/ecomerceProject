@@ -29,8 +29,26 @@ class Api::V1::OrdersController < Api::V1::BaseController
 
   def cart
     @order = current_user.orders.find_by(status: "ongoing")
+    if @order.nil?
+      skip_authorization
+      render json: { message: "Aucune commande en cours." }, status: :not_found
+    else
+      authorize @order
+      render 'show'
+    end
+  end
+
+  def update
+    @order = current_user.orders.find_by(status: "ongoing")
+
     authorize @order
-    render 'show'
+
+    if @order
+      @order.update!(status: "bought")
+      render json: { message: "Order status updated to 'bought'" }, status: :ok
+    else
+      render json: { error: "No ongoing order found" }, status: :not_found
+    end
   end
 
   private
