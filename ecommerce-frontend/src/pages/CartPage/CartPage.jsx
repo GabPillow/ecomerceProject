@@ -3,6 +3,7 @@ import './cartpage.css';
 
 function CartPage() {
   const [order, setOrder] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetch(`http://localhost:3000/api/v1/orders/cart`, {
@@ -25,6 +26,33 @@ function CartPage() {
     .catch((error) => {
     });
   }, []);
+
+  const handlePaymentClick = () => {
+    if (!order) return;
+
+    setLoading(true);
+
+    fetch(`http://localhost:3000/api/v1/orders/${order.id}`, {
+      method: "PUT",
+      headers: {
+        'Content-Type': 'application/json',
+        'X-User-Email': process.env.REACT_APP_USER_EMAIL,
+        'X-User-Token': process.env.REACT_APP_USER_TOKEN
+      },
+    })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Erreur lors de la mise à jour du statut de la commande');
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      alert("Erreur lors de la mise à jour de la commande.");
+    })
+    .finally(() => {
+      setLoading(false);
+    });
+  };
 
   const OrderCard = ({order}) => {
     return (
@@ -60,11 +88,12 @@ function CartPage() {
                 <div className='total-price-number'>{order.total_price}$</div>
               </div>
               <p>Le montant de la taxe sur les ventes sera calculé au moment de l'achat, le cas échéant</p>
-              <button className='paiement-button'>Passer au paiment</button>
+              <button className='paiement-button' onClick={handlePaymentClick}>Passer au paiment</button>
             </div>
           </div>
         </>
       )}
+      <p>Pas de commande en cours</p>
     </div>
   );
 }
