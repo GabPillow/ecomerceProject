@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import GameCard from './components/GameCard'
 import './homepage.css';
-import CartButton from '../../components/CartButton';
 
 function HomePage() {
   const [games, setGames] = useState([]);
@@ -19,7 +18,6 @@ function HomePage() {
 
   return (
     <div className='homepage'>
-      <CartButton />
       <div className='game-list'>
         {games.length > 0 ? (
           games.map((game) => (
