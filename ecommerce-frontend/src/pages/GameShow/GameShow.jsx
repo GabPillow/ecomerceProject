@@ -20,6 +20,27 @@ function GameShow() {
       }
   }, [gameId]);
 
+  const handleAddToCart = () => {
+    fetch('http://localhost:3000/api/v1/orders', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-User-Email': process.env.REACT_APP_USER_EMAIL,
+        'X-User-Token': process.env.REACT_APP_USER_TOKEN
+      },
+      body: JSON.stringify({ game_id: gameId })
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message) {
+          alert(data.message);
+        }
+      })
+      .catch((error) => {
+        console.error('Erreur lors de l\'ajout au panier:', error);
+      });
+  };
+
   const TextInfo = ({title, text}) => {
     return (
       <div className='text-box'>
@@ -54,7 +75,9 @@ function GameShow() {
                   <div className='price'>
                     {game.price}
                   </div>
-                  <div className='buy-button'>Ajouter au panier</div>
+                  <button className='buy-button' onClick={handleAddToCart}>
+                    Ajouter au panier
+                  </button>
                 </div>
               </div>
             </div>

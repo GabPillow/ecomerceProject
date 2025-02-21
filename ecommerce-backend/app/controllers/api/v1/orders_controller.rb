@@ -1,14 +1,17 @@
 class Api::V1::OrdersController < Api::V1::BaseController
   acts_as_token_authentication_handler_for User
-  before_action :set_orders, only: [ :show, :update ]
+  # after_action :verify_policy_scoped, only: :index
+  after_action :verify_authorized
 
   def create
     game = Game.find(params[:game_id])
     order = current_user.orders.find_by(status: "ongoing")
-    authorize @order
+
     unless order
-      order = current_user.orders.create!(status: "ongoing")
+      order = current_user.orders.create!(status: "ongoing", total_price: game.price)
     end
+
+    authorize order
 
     order_item = order.order_items.find_by(game: game)
 
@@ -24,9 +27,10 @@ class Api::V1::OrdersController < Api::V1::BaseController
     render json: { error: "Game not found" }, status: :not_found
   end
 
-  def show
+  def cart
     @order = current_user.orders.find_by(status: "ongoing")
     authorize @order
+    render 'show'
   end
 
   private

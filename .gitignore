@@ -4,6 +4,7 @@
 ecommerce-frontend/node_modules/
 ecommerce-frontend/.pnp
 .ecommerce-frontend/pnp.js
+ecommerce-frontend/.env
 
 # testing
 /coverage
