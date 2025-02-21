@@ -1,6 +1,5 @@
 class Api::V1::OrdersController < Api::V1::BaseController
   acts_as_token_authentication_handler_for User
-  # after_action :verify_policy_scoped, only: :index
   after_action :verify_authorized
 
   def create
@@ -25,6 +24,20 @@ class Api::V1::OrdersController < Api::V1::BaseController
 
   rescue ActiveRecord::RecordNotFound
     render json: { error: "Game not found" }, status: :not_found
+  end
+
+  def index
+    @orders = current_user.orders
+
+    if @orders.empty?
+      skip_authorization
+      render json: { message: "Aucunes commandes." }, status: :not_found
+    else
+      @orders.each do |order|
+        authorize order
+      end
+      render 'index'
+    end
   end
 
   def cart
