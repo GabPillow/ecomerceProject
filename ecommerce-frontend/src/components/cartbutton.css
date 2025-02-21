@@ -1,0 +1,9 @@
+.cart-button {
+  font-size: 11px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  background-color: #5c7e10;
+  width: fit-content;
+}
