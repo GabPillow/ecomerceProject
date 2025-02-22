@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './cartpage.css';
+import Loader from '../../components/Loader';
 
 function CartPage() {
   const [order, setOrder] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loadingCart, setLoadingCart] = useState(true);
 
   useEffect(() => {
     fetch(`http://localhost:3000/api/v1/orders/cart`, {
@@ -22,6 +23,7 @@ function CartPage() {
     })
     .then((data) => {
       setOrder(data.order);
+      setLoadingCart(false)
     })
     .catch((error) => {
     });
@@ -29,8 +31,6 @@ function CartPage() {
 
   const handlePaymentClick = () => {
     if (!order) return;
-
-    setLoading(true);
 
     fetch(`http://localhost:3000/api/v1/orders/${order.id}`, {
       method: "PUT",
@@ -49,9 +49,6 @@ function CartPage() {
     .catch((error) => {
       alert("Erreur lors de la mise à jour de la commande.");
     })
-    .finally(() => {
-      setLoading(false);
-    });
   };
 
   const OrderCard = ({order}) => {
@@ -74,12 +71,12 @@ function CartPage() {
           <div className='cart-title'>Votre panier</div>
           <div className='order-content'>
             <div className='order-list'>
-              {order.order_items.length > 0 ? (
+              {!loadingCart && order.order_items.length > 0 ? (
                 order.order_items.map((order_item) => (
                   <OrderCard order={order_item} />
                 ))
               ) : (
-                <p>Chargement des commandes...</p>
+                <Loader />
               )}
             </div>
             <div className='card-gotopayment'>
