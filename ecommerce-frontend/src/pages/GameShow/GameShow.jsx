@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './gameshow.css';
+import Loader from '../../components/Loader';
 
 function GameShow() {
   const { id: gameId} = useParams();
 
   const [game, setGame] = useState(null);
+  const [loadingGame, setLoadingGame] = useState(true);
 
   useEffect(() => {
       if (gameId) {
@@ -13,6 +15,7 @@ function GameShow() {
           .then((response) => response.json())
           .then((data) => {
             setGame(data);
+            setLoadingGame(false);
           })
           .catch((error) => {
             console.error('Erreur lors de la récupération du jeu:', error);
@@ -53,7 +56,7 @@ function GameShow() {
 
   return (
     <div className='game-show'>
-      {game && (
+      {!loadingGame && game ? (
         <>
           <div className='title'>{game.title}</div>
           <div className='game-presentation'>
@@ -91,7 +94,7 @@ function GameShow() {
             </div>
           </div>
         </>
-      )}
+      ) : (<Loader />)}
     </div>
   )
 

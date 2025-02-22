@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './wishlistpage.css';
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
+import Loader from '../../components/Loader';
 
 function WishlistPage() {
 
   const [wishlistItems, setWishlistItems] = useState([]);
   const [user, setUser] = useState([]);
+    const [loadingWishlist, setLoadingWishlist] = useState(true);
 
   useEffect(() => {
     fetch('http://localhost:3000/api/v1/wishlist_items', {
@@ -25,7 +27,8 @@ function WishlistPage() {
     })
     .then((data) => {
       setWishlistItems(data.wishlist);
-      setUser(data.user)
+      setUser(data.user);
+      setWishlistItems(false);
     })
     .catch((error) => {
     });
@@ -44,7 +47,7 @@ function WishlistPage() {
 
   return (
     <div className='wishlist-page'>
-      { wishlistItems && (
+      { !loadingWishlist && wishlistItems ? (
         <div className='wishlist-container'>
           <div className='wishlist-title'>{user.username} wishlist</div>
           <div className='wishlist-list'>
@@ -57,7 +60,7 @@ function WishlistPage() {
             )}
           </div>
         </div>
-      )}
+      ) : (<Loader />)}
     </div>
   );
 }

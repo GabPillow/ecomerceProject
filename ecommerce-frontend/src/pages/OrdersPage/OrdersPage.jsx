@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import './orderspage.css';
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
+import Loader from '../../components/Loader';
 
 function OrdersPage() {
 
   const [orders, setOrders] = useState([]);
+  const [loadingOrders, setLoadingOrders] = useState(true);
 
   useEffect(() => {
     fetch('http://localhost:3000/api/v1/orders', {
@@ -24,6 +26,7 @@ function OrdersPage() {
     })
     .then((data) => {
       setOrders(data.orders);
+      setLoadingOrders(false);
     })
     .catch((error) => {
     });
@@ -53,7 +56,7 @@ function OrdersPage() {
 
   return (
     <div className='orders-page'>
-      { orders && (
+      { !loadingOrders && orders ? (
         <div className='orders-container'>
           <div className='orders-title'>Vos achats</div>
           <div className='orders-list'>
@@ -62,11 +65,11 @@ function OrdersPage() {
                 <OrderCard order={order} />
               ))
             ) : (
-              <p>Chargement des commandes...</p>
+              <p>Pas de commandes</p>
             )}
           </div>
         </div>
-      )}
+      ) : (<Loader />)}
     </div>
   );
 }
