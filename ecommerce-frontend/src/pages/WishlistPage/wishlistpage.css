@@ -1,0 +1,33 @@
+.wishlist-page {
+  padding-left: 20%;
+  padding-right: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.wishlist-title {
+  font-size: 26px;
+  margin-bottom: 10px;
+  font-weight: bolder;
+}
+
+.wishlist-card {
+  width: 100%;
+  height: 180px;
+  background-color: rgba(53, 72, 92, 0.678);
+  padding: 15px;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.image-wishlist {
+  height: 150px;
+  width: 300px;
+  margin-right: 10px;
+}
+
+.wishlist-info {
+  display: flex;
+  flex-direction: column;
+}
