@@ -21,7 +21,7 @@ function NavBar() {
       <div className='navbar'>
         <NavLink name={"Magasin"} path={"/"} />
         <NavLink name={"Commandes"} path={"/orders"}  />
-        <NavLink name={"Wishlist"} path={"/"}  />
+        <NavLink name={"Wishlist"} path={"/wishlist"}  />
       </div>
     </div>
   );
