@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   # root "posts#index"
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :games, only: [:index, :show]
+      resources :games, only: [:index, :show] do
+        get 'search', on: :collection
+      end
       resources :wishlist_items, only: [:index, :create]
       resources :orders, only: [:index, :show, :create, :update] do
         get 'cart', on: :collection

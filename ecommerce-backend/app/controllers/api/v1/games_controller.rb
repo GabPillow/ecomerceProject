@@ -1,6 +1,6 @@
 class Api::V1::GamesController < Api::V1::BaseController
-  after_action :verify_authorized, except: :index
-  after_action :verify_policy_scoped, only: :index
+  after_action :verify_authorized, except: [:index, :search]
+  after_action :verify_policy_scoped, only: [:index, :search]
   before_action :set_game, only: [ :show ]
 
   def index
@@ -8,6 +8,11 @@ class Api::V1::GamesController < Api::V1::BaseController
   end
 
   def show
+  end
+
+  def search
+    @games = policy_scope(Game).where("title ILIKE ?", "%#{params[:query]}%")
+    authorize @games
   end
 
   private
