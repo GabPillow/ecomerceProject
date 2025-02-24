@@ -13,6 +13,10 @@ class GamePolicy < ApplicationPolicy
     true # Tout le monde peut voir un jeu
   end
 
+  def search?
+    true # Tout le monde peut voir un jeu
+  end
+
   def create?
     user.admin? # Seuls les admins peuvent ajouter un jeu
   end

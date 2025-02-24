@@ -24,3 +24,42 @@
 .cartbutton-nav {
   align-self: flex-end;
 }
+
+.search {
+  background-color: #9ec2dd;
+  width: 200px;
+  height: 20px;
+  padding: 2px;
+  border-radius: 3px;
+}
+
+.search-block {
+  position: relative;
+  margin-left: auto;
+}
+
+.search-results {
+  position: absolute;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+  left: auto; right: 0;
+}
+
+.search-item {
+  background-color: rgb(61, 68, 73);
+  position: relative;
+  width: 400px;
+  height: 50px;
+  padding: 2px;
+  display: flex;
+  font-weight: bolder;
+}
+
+.image-search {
+  width: 100px;
+  height: 40px;
+}
+
+.search-item:hover {
+  background-color: rgb(194, 211, 235);
+  color: rgb(15, 15, 15);
+}
