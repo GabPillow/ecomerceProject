@@ -1,0 +1,11 @@
+.positive-rating {
+  color: rgb(20, 134, 228);
+}
+
+.negative-rating {
+  color: rgb(177, 97, 6);
+}
+
+.mixed-rating {
+  color: rgb(219, 85, 7);
+}
