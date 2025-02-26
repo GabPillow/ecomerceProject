@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './gameshow.css';
 import Loader from '../../components/Loader';
+import DynamicRating from '../../components/DynamicRating';
 
 function GameShow() {
   const { id: gameId} = useParams();
@@ -65,7 +66,7 @@ function GameShow() {
               <div className='text'>
                 {game.description}
               </div>
-              <TextInfo title={"REVIEWS:"} text={game.rating}/>
+              <TextInfo title={"REVIEWS:"} text={<DynamicRating rating={game.rating}/>}/>
             </div>
           </div>
           <div className='game-info'>
