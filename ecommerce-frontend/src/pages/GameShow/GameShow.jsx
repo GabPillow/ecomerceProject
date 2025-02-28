@@ -3,12 +3,14 @@ import { useParams } from 'react-router-dom';
 import './gameshow.css';
 import Loader from '../../components/Loader';
 import DynamicRating from '../../components/DynamicRating';
+import { useCart } from '../../components/CartContext';
 
 function GameShow() {
   const { id: gameId} = useParams();
 
   const [game, setGame] = useState(null);
   const [loadingGame, setLoadingGame] = useState(true);
+  const { fetchCart } = useCart();
 
   useEffect(() => {
       if (gameId) {
@@ -35,6 +37,9 @@ function GameShow() {
       body: JSON.stringify({ game_id: gameId })
     })
       .then((response) => response.json())
+      .then(() => {
+        fetchCart();
+      })
       .catch((error) => {
         console.error('Erreur lors de l\'ajout au panier:', error);
       });
