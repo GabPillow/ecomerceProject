@@ -1,7 +1,9 @@
 import '../homepage.css'
 import { Link } from 'react-router-dom';
+import { useCart } from '../../../components/CartContext';
 
 function GameCard({ game }) {
+  const { fetchCart } = useCart();
 
   const handleAddToCart = (event) => {
     event.preventDefault()
@@ -16,6 +18,9 @@ function GameCard({ game }) {
       body: JSON.stringify({ game_id: game.id })
     })
       .then((response) => response.json())
+      .then(() => {
+        fetchCart();
+      })
       .catch((error) => {
         console.error('Erreur lors de l\'ajout au panier:', error);
       });
