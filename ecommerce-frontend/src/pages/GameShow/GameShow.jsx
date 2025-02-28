@@ -35,13 +35,24 @@ function GameShow() {
       body: JSON.stringify({ game_id: gameId })
     })
       .then((response) => response.json())
-      .then((data) => {
-        if (data.message) {
-          alert(data.message);
-        }
-      })
       .catch((error) => {
         console.error('Erreur lors de l\'ajout au panier:', error);
+      });
+  };
+
+  const handleAddTowWishlist = () => {
+    fetch('http://localhost:3000/api/v1/wishlist_items', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-User-Email': process.env.REACT_APP_USER_EMAIL,
+        'X-User-Token': process.env.REACT_APP_USER_TOKEN
+      },
+      body: JSON.stringify({ game_id: gameId })
+    })
+      .then((response) => response.json())
+      .catch((error) => {
+        console.error('Erreur lors de l\'ajout a la wishlist:', error);
       });
   };
 
@@ -69,6 +80,9 @@ function GameShow() {
               <TextInfo title={"REVIEWS:"} text={<DynamicRating rating={game.rating}/>}/>
             </div>
           </div>
+          <button className='wishlist-button' onClick={handleAddTowWishlist}>
+              Ajouter a la wishlist
+          </button>
           <div className='game-info'>
             <div className='info-left'>
               <div className='info-box'>

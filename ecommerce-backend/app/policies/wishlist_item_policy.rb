@@ -7,4 +7,8 @@ class WishlistItemPolicy < ApplicationPolicy
   def index?
     user == record.user
   end
+
+  def destroy?
+    user == record.user
+  end
 end

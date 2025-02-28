@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
   has_many :orders
   has_many :wishlist_items
+  has_many :order_items, through: :orders
 
   def wishlist_games
     games.joins(:wishlist_items).distinct
