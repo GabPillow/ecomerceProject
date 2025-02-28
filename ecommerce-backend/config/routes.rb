@@ -14,7 +14,8 @@ Rails.application.routes.draw do
       resources :games, only: [:index, :show] do
         get 'search', on: :collection
       end
-      resources :wishlist_items, only: [:index, :create]
+      resources :wishlist_items, only: [:index, :create, :destroy]
+      resources :order_items, only: [:destroy]
       resources :orders, only: [:index, :show, :create, :update] do
         get 'cart', on: :collection
       end

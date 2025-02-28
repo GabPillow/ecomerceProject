@@ -15,19 +15,23 @@
 .wishlist-card {
   width: 100%;
   height: 180px;
-  background-color: rgba(53, 72, 92, 0.678);
+  background-color: rgba(97, 117, 139, 0.726);
   padding: 15px;
   margin-bottom: 20px;
   display: flex;
 }
 
 .image-wishlist {
-  height: 150px;
-  width: 300px;
+  height: 100%;
+  width: 320px;
   margin-right: 10px;
 }
 
 .wishlist-info {
   display: flex;
   flex-direction: column;
+}
+
+.title-wishitem {
+  font-size: 20px;
 }
